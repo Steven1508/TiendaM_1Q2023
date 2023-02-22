@@ -1,4 +1,4 @@
-package com.TiendaM_1Q2023.controller.domain;
+package com.TiendaM_1Q2023.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

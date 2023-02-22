@@ -1,7 +1,7 @@
 
 package com.TiendaM_1Q2023.dao;
 
-import com.TiendaM_1Q2023.controller.domain.Cliente;
+import com.TiendaM_1Q2023.domain.Cliente;
 import org.springframework.data.repository.CrudRepository;
 
 
