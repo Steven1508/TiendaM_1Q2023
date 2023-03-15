@@ -2,6 +2,8 @@ package com.TiendaM_1Q2023.service;
 
 import com.TiendaM_1Q2023.domain.Cliente;
 import com.TiendaM_1Q2023.dao.ClienteDao;
+import com.TiendaM_1Q2023.dao.CreditoDao;
+import com.TiendaM_1Q2023.domain.Credito;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,9 @@ public class ClienteServiceImpl implements ClienteService {
     
     @Autowired
     ClienteDao clienteDao;
+    
+    @Autowired
+    CreditoDao creditoDao;
 
     @Override
     @Transactional(readOnly = true)
@@ -27,7 +32,11 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     @Transactional
-    public void save(Cliente cliente) {
+    public void save(Cliente cliente) { 
+        Credito credito = cliente.getCredito();
+         credito = creditoDao.save(credito); 
+        
+         cliente.setCredito(credito);
         clienteDao.save(cliente);
     }
 
