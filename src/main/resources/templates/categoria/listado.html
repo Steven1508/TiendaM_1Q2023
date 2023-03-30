@@ -9,7 +9,7 @@
         <header th:replace="layout/plantilla :: header" />
         <div class="contenido">
             <h2>Listado de Clientes</h2>
-            <a th:href="@{/categoria/nueva}">Nuevo Categoria</a>
+            <a th:href="@{/categoria/nuevo}">Nuevo Categoria</a>
             
             <div th:if="${categorias !=null and !categorias.empty}">
                 <table border="1">
@@ -24,8 +24,8 @@
                         <tr th:each="categoria : ${categorias}">
                             <td th:text="${categoria.descripcion}"></td>
                             <td><<input type="checkbox" name="activa" th:checked="${categoria.activo}" disabled="true"></td>
-                            <td><a th:href="@{/categoria/eliminar/} + ${articulo.idArticulo}">Eliminar</a></td>
-                            <td><a th:href="@{/categoria/modificar/} + ${articulo.idArticulo}">Modificar</a></td>
+                            <td><a th:href="@{/categoria/eliminar/} + ${categoria.idCategoria}">Eliminar</a></td>
+                            <td><a th:href="@{/categoria/modificar/} + ${categoria.idCategoria}">Modificar</a></td>
                         </tr>
                     </tbody>
                 </table>

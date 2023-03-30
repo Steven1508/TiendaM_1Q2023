@@ -21,7 +21,10 @@ public class ClienteController {
     
     @GetMapping("/cliente/listado")
     public String inicio(Model model) {
+        
         var clientes = clienteService.getClientes();
+        //var clientes = clienteService.getClientePorNombre("Ana");
+        //var clientes = clienteService.getClientePorApellidos("Castro Mora");
        model.addAttribute("clientes", clientes);
        
        
@@ -50,6 +53,18 @@ public class ClienteController {
     public String eliminarCliente(Cliente cliente) {
         clienteService.delete(cliente);
         return "redirect:/cliente/listado";
+    }
+    
+    @GetMapping("/cliente/buscar")
+    public String buscar(Cliente cliente) {
+        return "/cliente/buscarCliente";
+    }
+    
+    @PostMapping("/cliente/busqueda")
+    public String busqueda(Cliente cliente, Model model){
+        var clientes = clienteService.getClientePorNombre(cliente.getNombre());
+        model.addAttribute("resultados", clientes);
+        return "/cliente/buscarCliente";
     }
 
 }
